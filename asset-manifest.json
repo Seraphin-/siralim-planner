@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/siralim-planner/static/css/main.57858715.chunk.css",
+    "main.js": "/siralim-planner/static/js/main.5be4651b.chunk.js",
+    "main.js.map": "/siralim-planner/static/js/main.5be4651b.chunk.js.map",
+    "runtime-main.js": "/siralim-planner/static/js/runtime-main.718eac12.js",
+    "runtime-main.js.map": "/siralim-planner/static/js/runtime-main.718eac12.js.map",
+    "static/js/2.93c4b7c0.chunk.js": "/siralim-planner/static/js/2.93c4b7c0.chunk.js",
+    "static/js/2.93c4b7c0.chunk.js.map": "/siralim-planner/static/js/2.93c4b7c0.chunk.js.map",
+    "static/js/3.cea4c023.chunk.js": "/siralim-planner/static/js/3.cea4c023.chunk.js",
+    "static/js/3.cea4c023.chunk.js.map": "/siralim-planner/static/js/3.cea4c023.chunk.js.map",
+    "index.html": "/siralim-planner/index.html",
+    "static/css/main.57858715.chunk.css.map": "/siralim-planner/static/css/main.57858715.chunk.css.map",
+    "static/js/2.93c4b7c0.chunk.js.LICENSE.txt": "/siralim-planner/static/js/2.93c4b7c0.chunk.js.LICENSE.txt",
+    "static/media/ChangeLog.350505c4.md": "/siralim-planner/static/media/ChangeLog.350505c4.md",
+    "static/media/InfoSection.d28ecc31.md": "/siralim-planner/static/media/InfoSection.d28ecc31.md"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.718eac12.js",
+    "static/js/2.93c4b7c0.chunk.js",
+    "static/css/main.57858715.chunk.css",
+    "static/js/main.5be4651b.chunk.js"
+  ]
+}
