@@ -1,5 +1,10 @@
 # Siralim Planner
 
+## Fork information
+This fork contains code to support simple notes and spells, along with v1.0.4 changes. It's live here: https://seraphin.xyz/siralim-planner/
+
+## About
+
 This is a fan-made tool designed to simplify the process of planning builds for Siralim Ultimate. Further details on the tool are available
 on the Info page of the tool: [https://berated-bert.github.io/siralim-planner/](https://berated-bert.github.io/siralim-planner/).
 
