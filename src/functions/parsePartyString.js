@@ -38,12 +38,13 @@ function parseCharacterSection(text) {
  * @return {Object}      An object containing {traits, relics}, which are an array
  *                       of 18 (or fewer) trait names and 6 (or fewer) relic names respectively.
  */
-function parseCreatureSection(text) {  
+function parseCreatureSection(text) {
 
   const innateDetectionText = "Innate Trait: ";
   const fusedDetectionText = "Fused Trait: ";
   const traitSlotDetectionText = "Trait Slot: ";
   const relicSlotDetectionText = "Relic: ";
+  const spellStartDetectionText = "Spell Gems:";
 
   // Split into creatures using the ---- lines.
   // Hopefully this does not change between patches.
@@ -57,6 +58,7 @@ function parseCreatureSection(text) {
   let secondaries = new Array(6).fill(null);
   let artifacts = new Array(6).fill(null);
   let relics = new Array(6).fill(null);
+  let spells = new Array(6).fill(null);
 
   // For each creature, get the innate, secondary and artifact trait.
   // Throw an error if a creature has more than one of each trait type.
@@ -69,6 +71,8 @@ function parseCreatureSection(text) {
     let secondaryTrait = null;
     let artifactTrait = null;
     let relic = null;
+    let spell = [];
+    let checkingSpells = true;
 
     let lines = creatures[i].split('\n');
 
@@ -89,11 +93,22 @@ function parseCreatureSection(text) {
         if(relic) throw new Error("Creature #" + (i + 1) + " has more than one relic.")
         relic = line.slice(relicSlotDetectionText.length).split(' (Rank')[0];
       }
+      else if (line.startsWith(spellStartDetectionText)) {
+        checkingSpells = true;
+      }
+      else if (checkingSpells) {
+        if(line === "") {
+          checkingSpells = false;
+          continue;
+        }
+        spell.push(line);
+      }
     }
     innates[i] = innateTrait;
     secondaries[i] = secondaryTrait;
     artifacts[i] = artifactTrait;
     relics[i] = relic;
+    spells[i] = spell;
   }
 
   let traitsArray = [];
@@ -117,7 +132,7 @@ function parseCreatureSection(text) {
   }
   if(!atLeastOne) throw new Error("The party string does not appear to contain any traits.")
 
-  return {traits: traitsArray, relics: relicsArray};
+  return {traits: traitsArray, relics: relicsArray, spells: spells};
 
 }
 
@@ -135,9 +150,9 @@ function parsePartyString(text) {
   const sections = text.split('========== CREATURES ==========')
   
   const {spec, anointment_names} = parseCharacterSection(sections[0]);
-  const {traits, relics} = parseCreatureSection(sections[1]);
+  const {traits, relics, spells} = parseCreatureSection(sections[1]);
 
-  return {traits, relics, spec, anointment_names};
+  return {traits, relics, spec, anointment_names, raw_spells: spells};
 }
 
 export default parsePartyString;

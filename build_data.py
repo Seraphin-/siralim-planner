@@ -21,6 +21,9 @@ PERKS_FILENAME = "data/steam-guide/perks.csv"
 RELICS_FILENAME = (
     "data/siralim-ultimate-compendium/Siralim Ultimate Compendium - Relics.csv"
 )
+SPELLS_FILENAME = (
+    "data/siralim-ultimate-compendium/Siralim Ultimate Compendium - Spells.csv"
+)
 
 
 def generate_unique_name(row):
@@ -341,6 +344,59 @@ def load_relics_data(relics_filename):
     return sorted_relics
 
 
+def load_spells_data(spells_filename):
+    """Load the list of relics from the compendium.
+
+    Args:
+        relics_filename (str): The filename of the .csv file from
+          the compendium.
+    """
+    spells = {}
+    uids = {}
+    with open(spells_filename, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            spell = {}
+            spell["name"] = row["Spell Name"]
+            spell["class"] = row["Class"]
+            spell["charges"] = row["Charges"]
+            spell["description"] = row["Spell Description"]
+            spell["search_text"] = " ".join(
+                [
+                    spell["class"],
+                    spell["name"],
+                    spell["charges"],
+                    spell["description"]
+                ]
+            )
+
+            # Get uid and ensure it is unique.
+            # A bit messy but gets the job done.
+            uid = "".join(
+                [
+                    c
+                    for c in spell["name"].lower()+spell["class"]
+                    if c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".lower()
+                ]
+            )
+            uid = hashlib.md5(uid.encode("utf-8")).hexdigest()[:HASH_LENGTH]
+            if uid in uids:
+                print(uid)
+                logger.error(
+                    f"uid '{uid}' already exists. "
+                    f"({spell}, {uids[uid]})"
+                )
+                sys.exit(0)
+            uids[uid] = 1
+            spell["uid"] = uid
+
+            if spell["name"] not in spells:
+                spells[spell["name"]] = spell
+
+    sorted_spells = sorted(spells.values(), key=lambda x: x["name"])
+    return sorted_spells
+
+
 def generate_metadata(compendium_version, json_data):
     """Simple function to generate some 'metadata' (compendium version,
     highest/lowest stats etc) and save it as a dictionary.
@@ -412,6 +468,11 @@ def build_data(output_folder: str):
 
     with open(os.path.join(output_folder, "relics.json"), "w") as f:
         json.dump(relics_data, f)
+
+    spells_data = load_spells_data(SPELLS_FILENAME)
+
+    with open(os.path.join(output_folder, "spells.json"), "w") as f:
+        json.dump(spells_data, f)
 
     # Print a pretty version of it for manual inspection etc
     # with open("src/data/specializations_pretty.json", "w") as f:

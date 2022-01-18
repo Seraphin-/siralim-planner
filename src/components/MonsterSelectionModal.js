@@ -221,10 +221,6 @@ class MonsterSelectionRow extends Component {
 
 
 
-
-
-
-
 /**
  * A simple function that returns the family of a creature, or the class + ' traits' in the case that
  * the family is not present (as is the case for backer traits).

@@ -31,7 +31,8 @@ function MonsterClassIcon(props) {
   if(pi === "life") icon = icon_life;
 
   return (
-    <span className="cls-icon">{icon && <img title={toTitleCase(pi)} src={icon} className="class-icon" alt={"class-" + pi}/>}</span>
+    <span className="cls-icon">{icon && <img title={props.title ? props.title : toTitleCase(pi)} src={icon}
+                                             className={"class-icon" + (props.size === "lg" ? "-lg" : "")} alt={"class-" + pi}/>}</span>
   )
 }
 

@@ -21,6 +21,8 @@ import parsePartyString from "./functions/parsePartyString";
 import randomSample from "./functions/randomSample";
 import getTraitErrors from "./functions/getTraitErrors";
 
+import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
+
 import "./App.scss";
 
 Modal.setAppElement("#root");
@@ -31,6 +33,7 @@ const specializationsList = require("./data/specializations");
 const metadata = require("./data/metadata");
 const compendium_version = metadata.compendium_version;
 const relicsList = require("./data/relics");
+const spellsList = require("./data/spells");
 // [
 //   {name: "Wintermaul", stat_bonus: "Health",  abbreviation: "wintermaul", perks: [{'rank': 10, 'description': 'Does a cool thing'}]},
 //   {name: "Temptation", abbreviation: "temptation"},
@@ -225,9 +228,11 @@ class SiralimPlanner extends Component {
   constructor(props) {
     super(props);
     this.originalState = {
-      partyMembers: [],
+      partyMembers: this.genEmptyParty(),
       anointments: [],
       relics: [],
+      spells: this.genEmptySpells(),
+      notes: this.genEmptyNotes(),
       currentSpecialization: null,
       maxAnointments: 5,
 
@@ -291,6 +296,31 @@ class SiralimPlanner extends Component {
       }
       saveString += r.uid;
     }
+
+    // Generate spells string
+    // TODO smarter
+    if (this.state.spells.length > 0) saveString += "&z=";
+    let spellNames = [];
+    for (let s of this.state.spells) {
+      if (!s) {
+        spellNames.push("");
+        continue;
+      }
+      let names = [];
+      for(let spell of s) {
+        if(!spell) {
+          names.push("x");
+          continue;
+        }
+        names.push(spell.uid);
+      }
+      spellNames.push(names.join(""));
+    }
+    saveString += spellNames.join("_");
+
+    // Notes string
+    if (this.state.notes.length > 0) saveString += "&n=";
+    saveString += compressToEncodedURIComponent(this.state.notes.join("_"));
 
     this.props.history.push("?b=" + saveString);
   }
@@ -392,6 +422,36 @@ class SiralimPlanner extends Component {
     this.setState(
       {
         relics: newRelics,
+      },
+      this.generateSaveString
+    );
+  }
+
+  /**
+   * Update the notes array to newNotes and generate an updated
+   * saveString.
+   * @param  {Array} newNotes An array of relic objects.
+   */
+  updateNotes(newNotes) {
+    console.log(newNotes);
+    this.setState(
+      {
+        notes: newNotes,
+      },
+      this.generateSaveString
+    );
+  }
+
+  /**
+   * Update the spells array to newSpells and generate an updated
+   * saveString.
+   * @param  {Array} newSpells An array of relic objects.
+   */
+  updateSpells(newSpells) {
+    console.log(newSpells);
+    this.setState(
+      {
+        spells: newSpells,
       },
       this.generateSaveString
     );
@@ -506,6 +566,35 @@ class SiralimPlanner extends Component {
     return relics;
   }
 
+  genEmptyParty() {
+    let partyMembers = [];
+    for (let i = 0; i < 6; i++) {
+      partyMembers.push([]);
+      for (let j = 0; j < 3; j++) {
+        partyMembers[i].push({ monster: {} });
+      }
+    }
+    return partyMembers;
+  }
+
+  genEmptySpells() {
+    let spells = [];
+    for (let i = 0; i < 6; i++) {
+      spells.push([]);
+    }
+
+    return spells;
+  }
+
+  genEmptyNotes() {
+    let notes = [];
+    for (let i = 0; i < 6; i++) {
+      notes.push("");
+    }
+
+    return notes;
+  }
+
   /**
    * Given a list of uids, construct a new array of monsterPlannerRows
    * where each item is the monster that corresponds to that particular
@@ -523,16 +612,9 @@ class SiralimPlanner extends Component {
   populateFromUids(uids) {
     let noti, status;
     //let monsterPlannerRows = [];
-    let partyMembers = [];
+    let partyMembers = this.genEmptyParty();
     // Start by generating an empty list of 18 rows, corresponding to each
     // trait slot.
-
-    for (let i = 0; i < 6; i++) {
-      partyMembers.push([]);
-      for (let j = 0; j < 3; j++) {
-        partyMembers[i].push({ monster: {} });
-      }
-    }
 
     for (let i = 0; i < Math.min(18, uids.length); i++) {
       let uid = uids[i];
@@ -565,16 +647,8 @@ class SiralimPlanner extends Component {
     let notificationText = null;
     let notificationStatus = null;
 
-    let partyMembers = [];
+    let partyMembers = this.genEmptyParty();
     let relics = [];
-
-    for (let i = 0; i < 6; i++) {
-      partyMembers.push([]);
-      relics.push(null);
-      for (let j = 0; j < 3; j++) {
-        partyMembers[i].push({ monster: {} });
-      }
-    }
 
     // Get string from param if there is any
     const windowUrl = window.location.search;
@@ -642,9 +716,51 @@ class SiralimPlanner extends Component {
       }
     }
 
+    let spells = this.genEmptySpells();
+    const spellsString = params.get("z");
+    if (spellsString) {
+      spells = [];
+      for(let creature of spellsString.split("_")) {
+        let s = [];
+        for(let start = 0; start < creature.length; start++) {
+          let spell_ = false;
+          if(creature[start] !== "x") {
+            // TODO smarter
+            for (let c of spellsList) {
+              if (c.uid === creature.substring(start, start+6)) {
+                spell_ = c;
+                break;
+              }
+            }
+
+            if (!spell_) {
+              notificationText = "Error parsing spells in URL!";
+              notificationStatus = "error";
+            }
+            start += 5;
+          }
+          s.push(spell_);
+        }
+        spells.push(s);
+      }
+    }
+    if(spells.length !== 6) {
+      notificationText = "Error parsing spells in URL: less than 6 creatures";
+      notificationStatus = "error";
+    }
+
+    // Notes
+    let notes = this.genEmptyNotes();
+    const notesString = params.get("n");
+    if (notesString) {
+      notes = decompressFromEncodedURIComponent(notesString).split("_");
+    }
+
     this.setState({
       anointments: anointments,
       relics: relics,
+      spells: spells,
+      notes: notes,
       currentSpecialization: specialization,
       partyMembers: partyMembers,
       notificationText: notificationText,
@@ -792,12 +908,33 @@ class SiralimPlanner extends Component {
     let notificationStatus = null;
 
     try {
-      let { traits, relics, spec, anointment_names } = parsePartyString(str);
+      let { traits, relics, spec, anointment_names, raw_spells } = parsePartyString(str);
       let uids = this.traitsToUids(traits);
       let pm = this.populateFromUids(uids);
       if (pm.noti) notificationText = pm.noti;
       if (pm.status) notificationStatus = pm.status;
       let partyMembers = pm.partyMembers;
+
+      let spells = [];
+      for(let creature of raw_spells) {
+        let spell = [];
+        for(let s of creature) {
+          let spell_ = false;
+          for (let c of spellsList) {
+            if (c.name === s) {
+              spell_ = c;
+              break;
+            }
+          }
+
+          if (!spell_) {
+            notificationText = "Error parsing spells in URL!";
+            notificationStatus = "error";
+          }
+          spell.push(spell_);
+        }
+        spells.push(spell);
+      }
 
       if (!specializationNameMap.hasOwnProperty(spec)) {
         throw new Error('Specialization "' + spec + '" was not found.');
@@ -837,9 +974,10 @@ class SiralimPlanner extends Component {
           uploadBuildModalIsOpen: false,
           currentSpecialization: specialization,
           anointments: anointments,
+          spells: spells,
           notificationText: notificationText,
           notificationStatus: notificationStatus,
-          notificationIndex: this.state.notificationIndex + 1,
+          notificationIndex: this.state.notificationIndex + 1
         },
         () => {
           this.generateSaveString();
@@ -990,6 +1128,8 @@ class SiralimPlanner extends Component {
       anointments.push(anointmentUIDMap[randomAnointmentUID]);
     }
 
+    // TODO spells
+
     // Update notification text
     const notificationText = "Your build has been randomised.";
     const notificationStatus = "success";
@@ -1071,7 +1211,12 @@ class SiralimPlanner extends Component {
             clearPartyMember={this.clearPartyMember.bind(this)}
             relics={this.state.relics}
             relicsList={relicsList}
+            spells={this.state.spells}
+            spellsList={spellsList}
+            notes={this.state.notes}
             updateRelics={this.updateRelics.bind(this)}
+            updateNotes={this.updateNotes.bind(this)}
+            updateSpells={this.updateSpells.bind(this)}
           />
         </main>
         <AppFooter />

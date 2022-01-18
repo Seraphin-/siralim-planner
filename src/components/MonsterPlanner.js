@@ -1,6 +1,8 @@
 import React, {Component, PureComponent} from 'react';
 import Modal from 'react-modal';
 import _ from 'underscore';
+import {DebounceInput} from 'react-debounce-input';
+import ReactTooltip from "react-tooltip";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -8,6 +10,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import icon_attack  from '../icons/attack.png'
 import icon_health  from '../icons/health.png'
@@ -17,6 +21,7 @@ import icon_speed    from '../icons/speed.png'
 
 import MonsterClassIcon from './MonsterClassIcon'
 import getTraitErrors from '../functions/getTraitErrors';
+import SpellSelectionModal from './SpellSelectionModal'
 
 /**
  * A class that corresponds to a single MonsterRow from within the Monster Planning window
@@ -220,6 +225,36 @@ class MonsterPlannerTraitSlot extends PureComponent {
   }
 }
 
+/**
+ * A spell slot on the Monster Planner interface.
+ * This provides the functionality for dragging and dropping.
+ */
+class MonsterPlannerSpellSlot extends PureComponent {
+  render() {
+    let cls = this.props.spell ? this.props.spell.class : "empty";
+    return (
+        <div className="party-member-spell-slot" onClick={this.props.onClick}
+             data-tip={this.props.spell ? (this.props.spell.name + " (" + this.props.spell.class + ")") : "Empty spell slot"}>
+          <div className={"cls-" + cls.toLowerCase()}
+               // draggable={this.props.draggable}
+               // onDragStart={this.props.onDragStart()}
+               // onDragOver={this.props.onDragOver()}
+               // onDrop={this.props.onDrop()}
+               //
+               // onMouseUp={ this.props.onMouseUp}
+            >
+            <div className={"cls-container"}>
+              {this.props.spell ?
+                  <MonsterClassIcon icon={cls} title={this.props.spell.name + " (" + this.props.spell.class + ")"} size={"lg"} />
+                  : <div className="class-icon-lg spell-add-icon-fa"><FontAwesomeIcon icon={faPlus}/></div>
+              }
+            </div>
+          </div>
+        </div>
+    )
+  }
+}
+
 
 /**
  * A component representing the class of a creature, to be rendered in the monster profile.
@@ -312,6 +347,20 @@ class MonsterPlannerRelicSlot extends PureComponent {
 }
 
 /**
+ * A component representing the clickable note button next to the monster.
+ */
+class MonsterPlannerNoteSlot extends PureComponent {
+
+  render() {
+    return (
+        <div className="party-member-note-slot" onClick={this.props.onClick} title="Note for this monster">
+          <div className="note-icon"><FontAwesomeIcon icon={faStickyNote} /></div>
+        </div>
+    )
+  }
+}
+
+/**
  * A component representing a single party member on the Monster Planner interface.
  * @property {String} state.monsterClass The class of the monster.
  */
@@ -346,6 +395,7 @@ class MonsterPlannerPartyMember extends PureComponent {
         monsterClass: this.getMonsterClass()
       });
     }
+    ReactTooltip.rebuild();
   }
 
   /**
@@ -381,6 +431,7 @@ class MonsterPlannerPartyMember extends PureComponent {
           <MonsterPlannerCreatureStats monster_1={this.props.partyMember[0].monster} monster_2={this.props.partyMember[1].monster}/>
           <MonsterPlannerCreatureClass monsterClass={this.state.monsterClass}/>
 
+          <MonsterPlannerNoteSlot onClick={this.props.onNoteClick} />
         </div>
         <div className={"party-member-traits cls-" + this.state.monsterClass.toLowerCase()}>
 
@@ -400,6 +451,23 @@ class MonsterPlannerPartyMember extends PureComponent {
               clearPartyMember={() => this.props.clearPartyMember(this.props.partyMemberId, i)}
             />             
           )}
+        </div>
+        <div className={"party-member-spells"}>
+          {this.props.spells.map((spell, i) =>
+              <MonsterPlannerSpellSlot
+                  spell={spell}
+                  key={i}
+                  spellSlotIndex={i}
+                  onClick={this.props.onSpellClick(i)}
+                  /*draggable="true"*/
+              />
+          )}
+          <MonsterPlannerSpellSlot
+              spell={false}
+              key={this.props.spells.length}
+              spellSlotIndex={this.props.spells.length}
+              onClick={this.props.onSpellClick(this.props.spells.length)}
+          />
         </div>
       </div>
     )
@@ -549,6 +617,58 @@ class RelicSelectionModal extends Component {
 }
 
 /**
+ * The note entry modal.
+ */
+class NoteModal extends Component {
+
+  constructor(props) {
+    super(props);
+    this.changeNote = this.changeNote.bind(this);
+  }
+
+  /**
+   * When component updates, and the relic has changed in the parent
+   * and this component does not yet have a relic, set the relic
+   * to the first one in the parent component.
+   * @param  {Object} prevProps The previous props.
+   * @param  {Object} prevState The previous state.
+   */
+  componentDidUpdate(prevProps, prevState) {
+    if(!_.isEqual(prevProps.currentNote, this.props.currentNote))
+    {
+      this.setState({
+        currentNote: this.props.currentNote ? this.props.currentNote : ""
+      })
+    }
+  }
+  
+  changeNote(event) {
+    this.props.updateNote(event.target.value);
+  }
+
+  /**
+   * The render function. Is super long and needs breaking down into smaller components.
+   * @return {ReactComponent} The anointments modal.
+   */
+  render() {
+    return (
+      <Modal className="modal-content modal-content-info relic-selection-modal modal-wide "
+             overlayClassName="modal-overlay modal-overlay-info is-open" isOpen={this.props.modalIsOpen}>
+        <div className="modal-header">
+          <h3>Monster Note</h3>
+          <button id="close-upload-party-modal" className="modal-close" onClick={this.props.closeModal}><FontAwesomeIcon icon={faTimes} /></button>
+        </div>
+
+        <div className="info-modal">
+          <DebounceInput className="note-box" debounceTimeout={200} element="textarea" placeholder="Write a note about this monster..." onChange={this.changeNote} value={this.props.currentNote} />
+        </div>
+      </Modal>
+
+    )
+  }
+}
+
+/**
  * The monster planner interface (i.e. the section with 6 party members).
  * Drag and drop Code found here: https://codepen.io/frcodecamp/pen/OEovqx 
  * @property {Boolean} state.dragging Whether the user is currently dragging a trait.
@@ -565,6 +685,9 @@ class MonsterPlanner extends Component {
     this.state = {
       dragging: false,
       relicIndex: null, // Index of most recently selected relic.
+      spellIndex: null,
+      spellSlotIndex: null,
+      noteIndex: null,
     }
     this.myRef = React.createRef();
   }
@@ -676,6 +799,36 @@ class MonsterPlanner extends Component {
   }
 
   /**
+   * Update the spell at the current index to a new spell.
+   * @param  {Object} newSpell The spell to update the spell at state.spellIndex to.
+   */
+  updateSpell(newSpell) {
+    if(!newSpell) {
+      if(this.state.spellSlotIndex >= this.props.spells[this.state.spellIndex].length)
+        return; // Do nothing - should be blocked
+      this.props.spells[this.state.spellIndex][this.state.spellSlotIndex] = false;
+      while(this.props.spells[this.state.spellIndex].length && !this.props.spells[this.state.spellIndex][this.props.spells[this.state.spellIndex].length - 1]) {
+        this.props.spells[this.state.spellIndex].pop();
+      }
+    } else {
+      if (this.state.spellSlotIndex >= this.props.spells[this.state.spellIndex].length)
+        this.props.spells[this.state.spellIndex].push(newSpell);
+      else this.props.spells[this.state.spellIndex][this.state.spellSlotIndex] = newSpell;
+    }
+    this.closeSpellModal();
+    this.props.updateSpells(this.props.spells);
+  }
+
+  /**
+   * Update the note at the current index to a new note.
+   * @param  {Object} newNote The note to update the note at state.noteIndex to.
+   */
+  updateNote(newNote) {
+    this.props.notes[this.state.noteIndex] = newNote;
+    this.props.updateNotes(this.props.notes);
+  }
+
+  /**
    * Open the relic selection modal for the given relic index.
    * @param  {int} relicIndex Index of the relic that was clicked.
    */
@@ -687,12 +840,56 @@ class MonsterPlanner extends Component {
   }
 
   /**
+   * Open the note selection modal for the given note index.
+   * @param  {int} noteIndex Index of the note that was clicked.
+   */
+  openNoteModal(noteIndex) {
+    this.setState({
+      noteModalIsOpen: true,
+      noteIndex: noteIndex
+    })
+  }
+
+  /**
+   * Open the spell selection modal for the given spell index.
+   * @param  {int} spellIndex Index of the spell that was clicked.
+   */
+  openSpellModal(spellIndex, spellSlot) {
+    this.setState({
+      spellModalIsOpen: true,
+      spellIndex: spellIndex,
+      spellSlotIndex: spellSlot,
+    })
+  }
+
+  /**
    * Close the relic modal.
    */
   closeRelicModal() {
     this.setState({
       relicModalIsOpen: false,
       relicIndex: null,
+    })
+  }
+
+  /**
+   * Close the note modal.
+   */
+  closeNoteModal() {
+    this.setState({
+      noteModalIsOpen: false,
+      noteIndex: null,
+    })
+  }
+
+  /**
+   * Close the spell modal.
+   */
+  closeSpellModal() {
+    this.setState({
+      spellModalIsOpen: false,
+      spellIndex: null,
+      spellNumber: null,
     })
   }
 
@@ -714,6 +911,24 @@ class MonsterPlanner extends Component {
           updateRelic={this.updateRelic.bind(this)}
 
         />
+        <NoteModal
+            modalIsOpen={this.state.noteModalIsOpen}
+            closeModal={this.closeNoteModal.bind(this)}
+
+            currentNote={this.props.notes[this.state.noteIndex]}
+            noteIndex={this.state.relicIndex}
+            updateNote={this.updateNote.bind(this)}
+        />
+        <SpellSelectionModal
+            modalIsOpen={this.state.spellModalIsOpen}
+            closeModal={this.closeSpellModal.bind(this)}
+
+            spellsList={this.props.spellsList}
+            currentSpell={this.props.spells[this.state.spellIndex]}
+            spellIndex={this.state.spellIndex}
+            spellSlotIndex={this.state.spellSlotIndex}
+            updateSpell={this.updateSpell.bind(this)}
+        />
 
 
         <h3 className="section-title">Party</h3>
@@ -724,7 +939,10 @@ class MonsterPlanner extends Component {
             clearPartyMember={this.props.clearPartyMember}
             partyMemberId={i}
             relic={this.props.relics[i]}
+            spells={this.props.spells[i]}
             onRelicClick={() => this.openRelicModal(i)}
+            onNoteClick={() => this.openNoteModal(i)}
+            onSpellClick={(j) => () => this.openSpellModal(i, j)}
 
             onDragStart={this.handleDragStart.bind(this)}
             onDragOver={this.handleDragOver.bind(this)}
@@ -732,7 +950,10 @@ class MonsterPlanner extends Component {
             onMouseUp={this.handleMouseUp.bind(this)}
           />
         )}
+
+        <ReactTooltip />
       </div>
+
     )
   }
 }
