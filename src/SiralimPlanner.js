@@ -320,7 +320,7 @@ class SiralimPlanner extends Component {
 
     // Notes string
     if (this.state.notes.length > 0) saveString += "&n=";
-    saveString += compressToEncodedURIComponent(this.state.notes.join("_"));
+    saveString += compressToEncodedURIComponent(JSON.stringify(this.state.notes));
 
     this.props.history.push("?b=" + saveString);
   }
@@ -753,7 +753,7 @@ class SiralimPlanner extends Component {
     let notes = this.genEmptyNotes();
     const notesString = params.get("n");
     if (notesString) {
-      notes = decompressFromEncodedURIComponent(notesString).split("_");
+      notes = JSON.parse(decompressFromEncodedURIComponent(notesString));
     }
 
     this.setState({
