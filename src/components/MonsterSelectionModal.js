@@ -1,6 +1,8 @@
 import React, {Component, PureComponent} from 'react';
 import _ from 'underscore';
 
+import Fuse from 'fuse.js';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import icon_attack  from '../icons/attack.png'
@@ -16,6 +18,7 @@ import { faSortAlphaDown } from '@fortawesome/free-solid-svg-icons'
 import { faSortAlphaDownAlt } from '@fortawesome/free-solid-svg-icons'
 import { faSortNumericDown } from '@fortawesome/free-solid-svg-icons'
 import { faSortNumericDownAlt } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons'
 
 import MonsterClassIcon from './MonsterClassIcon'
 
@@ -273,9 +276,14 @@ class MonsterSelectionModal extends PureComponent {
       appliedSearchTerm: "",
       sortField: null,
       sortOrder: null,
+      useFuse: false
     }
     this.searchTimeout = null;
     this.tableRef = React.createRef();
+
+    this.fuse = new Fuse(props.items,
+        {keys: ["search_text"], shouldSort: false, threshold: 0.2, findAllMatches: true, minMatchCharLength: 2, ignoreLocation: true, useExtendedSearch: true}
+    );
   }
 
 
@@ -388,13 +396,25 @@ class MonsterSelectionModal extends PureComponent {
   filterResults() {
     let searchTerm = this.state.currentSearchTerm.toLowerCase();
     let filteredItems = [];
-    const items = this.props.items;
-    for(let item of items) {
-      let searchText = item.search_text;
-      if(searchText.toLowerCase().indexOf(searchTerm) !== -1) {
-        filteredItems.push(item);
-      }      
+    if(searchTerm.length !== 0) {
+      if(this.state.useFuse) {
+        const items = this.fuse.search(searchTerm);
+        for (let item of items) {
+          filteredItems.push(item.item);
+        }
+      } else {
+        const items = this.props.items;
+        for(let item of items) {
+          let searchText = item.search_text;
+          if(searchText.toLowerCase().indexOf(searchTerm) !== -1) {
+            filteredItems.push(item);
+          }
+        }
+      }
+    } else {
+      filteredItems = this.props.items;
     }
+
     const sortedFilteredItems = this.sortResults(filteredItems);
     const filteredItemGroups = this.getItemGroups(sortedFilteredItems);
 
@@ -510,6 +530,7 @@ class MonsterSelectionModal extends PureComponent {
         <div className="modal-content">
           <div className="modal-header">
             <h3>Select a{slot_n} <b>{slot}</b> trait for party member <b>{this.props.currentPartyMemberId + 1}</b>. <span style={{'marginLeft': '20px'}}>{currentMonster && ("Current: " + currentMonster)}</span></h3>
+            <button aria-label={this.state.useFuse ? "Toggle fuzzy search (on)" : "Toggle fuzzy search (off)"} onClick={() => {this.state.useFuse = !this.state.useFuse; this.forceUpdate()}}><FontAwesomeIcon icon={faMagnifyingGlassPlus} /> {this.state.useFuse ? "Toggle fuzzy search (on)" : "Toggle fuzzy search (off)"} </button>
             <button id="close-modal" className="modal-close" aria-label="Close trait selection" onClick={this.props.closeModal}><FontAwesomeIcon icon={faTimes} /></button>
           
           </div>
