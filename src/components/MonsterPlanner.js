@@ -23,8 +23,6 @@ import MonsterClassIcon from './MonsterClassIcon'
 import getTraitErrors from '../functions/getTraitErrors';
 import SpellSelectionModal from './SpellSelectionModal'
 
-import ReactTooltip from "react-tooltip";
-
 /**
  * A function for rendering a particular class (cls).
  * It will render an icon if the class is one of the 5 classes in the game,
@@ -632,8 +630,6 @@ class MonsterPlannerPartyMember extends PureComponent {
             monster_2={this.props.partyMember[1].monster}
           />
           <MonsterPlannerCreatureClass monsterClass={this.state.monsterClass} />
-            relicName={this.props.relic ? this.props.relic.name : "No relic selected"}
-            sprite_filename={this.props.relic ? this.props.relic.abbreviation.toLowerCase() + ".png" : null}/>
 
           <MonsterPlannerNoteSlot onClick={this.props.onNoteClick} />
         </div>
@@ -680,15 +676,6 @@ class MonsterPlannerPartyMember extends PureComponent {
               }
             />
           ))}
-
-              onDragStart={() => this.props.onDragStart({ partyMemberId: this.props.partyMemberId, traitSlotId: i })}
-              onDragOver={() => this.props.onDragOver({ partyMemberId: this.props.partyMemberId, traitSlotId: i })}
-              onDrop={() => this.props.onDrop({ partyMemberId: this.props.partyMemberId, traitSlotId: i })}
-              onMouseUp={() => this.props.onMouseUp(this.props.partyMemberId, i, traitSlot.monster ? traitSlot.monster : null)}
-
-              clearPartyMember={() => this.props.clearPartyMember(this.props.partyMemberId, i)}
-            />
-          )}
         </div>
         <div className={"party-member-spells"}>
           {this.props.spells.map((spell, i) =>
@@ -974,7 +961,6 @@ class MonsterPlanner extends Component {
     this.state = {
       dragging: false,
       relicIndex: null, // Index of most recently selected relic.
-    };
       spellIndex: null,
       spellSlotIndex: null,
       noteIndex: null,
@@ -1234,6 +1220,9 @@ class MonsterPlanner extends Component {
             relic={this.props.relics[i]}
             spells={this.props.spells[i]}
             onRelicClick={() => this.openRelicModal(i)}
+            onNoteClick={() => this.openNoteModal(i)}
+            onSpellClick={(j) => () => this.openSpellModal(i, j)}
+
             onDragStart={this.handleDragStart.bind(this)}
             onDragOver={this.handleDragOver.bind(this)}
             onDrop={this.handleDrop.bind(this)}

@@ -1,7 +1,7 @@
 import React, { Component, PureComponent } from "react";
 import _ from "underscore";
 
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -391,7 +391,6 @@ class MonsterSelectionModal extends PureComponent {
       sortField: null,
       sortOrder: null,
       useFuse: false
-    }
     };
     this.searchTimeout = null;
     this.tableRef = React.createRef();
@@ -527,8 +526,15 @@ class MonsterSelectionModal extends PureComponent {
    * Afterwards, set this.state accordingly and scroll to the top of the table.
    */
   filterResults() {
-    let allSearchTerms = this.state.currentSearchTerm.split(/\s+AND\s+/);
+    let searchTerm = this.state.currentSearchTerm.toLowerCase();
+    const items = this.props.items;
     let filteredItems = [];
+    for(let item of items) {
+      let searchText = item.search_text;
+      if (searchText.toLowerCase().indexOf(searchTerm) !== -1) {
+        filteredItems.push(item);
+      }
+    }
     if(searchTerm.length !== 0) {
       if(this.state.useFuse) {
         const items = this.fuse.search(searchTerm);

@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^12.8.3",
     "assert": "^2.0.0",
     "concurrently": "^7.2.2",
+    "fuse.js": "^6.6.2",
     "gh-pages": "^3.2.3",
     "immer": ">=9.0.6",
     "jsdoc": "^3.6.10",
