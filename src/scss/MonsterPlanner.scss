@@ -1,15 +1,66 @@
-@import 'mixins.scss';
-
+@import "mixins.scss";
 
 #monster-planner {
   font-size: 13px;
   width: 100%;
-  padding: 15px 60px;
+  padding: 10px 40px;
   position: relative;
   margin-bottom: 20px;
+  @media (max-width: 1280px) {
+    padding: 15px 20px;
+  }
 }
 
+.__react_component_tooltip {
+  font-family: "Roboto", sans-serif;
+  padding: 8px 16px !important;
+  position: absolute;
 
+  .inner {
+    display: flex;
+    > div:nth-child(1) {
+      margin-right: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:after {
+        height: 100px;
+        width: 1px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        content: " ";
+      }
+    }
+    > div:nth-child(2) {
+      margin-left: 6px;
+
+      td {
+        background: none;
+        vertical-align: top;
+        align: left;
+        ul {
+          margin: 0;
+          padding: 0;
+          margin-bottom: 8px;
+          padding-left: 12px;
+          li {
+          }
+        }
+      }
+
+      h3 {
+        font-size: 1.1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        .cls-icon {
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
 /*
   .monster-planner-party-member
     .party-member-profile      
@@ -23,12 +74,11 @@
 */
 
 .monster-planner-party-member {
-
-  z-index: 50;
   position: relative;
   //border: 2px solid #ddd;
   //border-radius: 5px;
-  margin-bottom: 9px;    
+  margin-bottom: 8px;
+
   //border: 2px solid rgba(0, 0, 0, 0.3);
   //border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   display: flex;
@@ -39,7 +89,7 @@
   box-shadow: 1px 1px 6px -4px rgba(0, 0, 0, 0.95);
   padding: 0px;
 
-  @media(max-width: 1720px) {
+  @media (max-width: 1720px) {
     .party-member-profile {
       width: 20%;
     }
@@ -51,8 +101,9 @@
     }
   }
 
-  @media(max-width: 1280px) {
+  @media (max-width: 1280px) {
     display: block;
+    margin-bottom: 30px;
     .party-member-profile {
       width: 100%;
     }
@@ -75,7 +126,7 @@
       width: 100%;
     }
   }
-  @media(max-width: 992px) {
+  @media (max-width: 992px) {
     .party-member-traits {
       .trait-slot .trait-slot-clickable {
         display: block;
@@ -89,7 +140,7 @@
       }
     }
   }
-  
+
   // &.cls-chaos {
   //   //background: saturate(rgba($color-chaos, 0.15), 20);
   //   border-color: saturate(rgba(darken($color-chaos, 15), 0.5), 10);
@@ -110,58 +161,57 @@
   //   //background: saturate(rgba($color-nature, 0.15), 27);
   //   border-color: saturate(rgba(darken($color-nature, 15), 0.5), 20);
   // }
-
 }
 
 .party-member-profile {
-    width: 16%;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-self: stretch;
-    transition: background 0.2s ease;
-    position: relative;
-    
-    //border-right: 2px solid rgba(0, 0, 0, 0.15);
-    //border-top-left-radius: 5px;
-    //dborder-bottom-left-radius: 5px;
-    //border-radius: 5px;
-    //color: white;
-    transition: background 0.2s ease;
-    background: rgba(0, 0, 0, 0.15);
-    mix-blend-mode: multiply;
-    &.cls-chaos {
-      background: rgba($color-chaos, 0.3);
-      .party-member-relic-slot {
-        border-color: rgba($color-chaos, 0.3);
-      }
+  width: 16%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-self: stretch;
+  transition: background 0.2s ease;
+  position: relative;
+
+  //border-right: 2px solid rgba(0, 0, 0, 0.15);
+  //border-top-left-radius: 5px;
+  //dborder-bottom-left-radius: 5px;
+  //border-radius: 5px;
+  //color: white;
+  transition: background 0.2s ease;
+  background: rgba(0, 0, 0, 0.15);
+  mix-blend-mode: multiply;
+  &.cls-chaos {
+    background: rgba($color-chaos, 0.3);
+    .party-member-relic-slot {
+      border-color: rgba($color-chaos, 0.3);
     }
-    &.cls-death {
-      background: rgba(lighten($color-death, 30), 0.3);
-      .party-member-relic-slot {
-        border-color: rgba($color-death, 0.4);
-      }
+  }
+  &.cls-death {
+    background: rgba(lighten($color-death, 30), 0.3);
+    .party-member-relic-slot {
+      border-color: rgba($color-death, 0.4);
     }
-    &.cls-sorcery {
-      background: rgba($color-sorcery, 0.4);
-      .party-member-relic-slot {
-        border-color: rgba($color-sorcery, 0.5);
-      }
+  }
+  &.cls-sorcery {
+    background: rgba($color-sorcery, 0.4);
+    .party-member-relic-slot {
+      border-color: rgba($color-sorcery, 0.5);
     }
-    &.cls-life {
-      background: rgba(darken($color-life, 5), 0.5);
-      .party-member-relic-slot {
-        border-color: rgba(darken($color-life, 25), 0.5);
-      }
+  }
+  &.cls-life {
+    background: rgba(darken($color-life, 5), 0.5);
+    .party-member-relic-slot {
+      border-color: rgba(darken($color-life, 25), 0.5);
     }
-    &.cls-nature {
-      background: rgba($color-nature, 0.5);
-      .party-member-relic-slot {
-        border-color: rgba(darken($color-nature, 15), 0.5);
-      }
+  }
+  &.cls-nature {
+    background: rgba($color-nature, 0.5);
+    .party-member-relic-slot {
+      border-color: rgba(darken($color-nature, 15), 0.5);
     }
+  }
 }
 
 .party-member-profile {
@@ -200,8 +250,6 @@
     justify-content: center;
     flex-direction: column;
 }
-
-
 
 .party-member-relic-slot {
   position: absolute;
@@ -361,7 +409,6 @@
   width: 100%;
   height: 30px;
 
-
   flex-basis: 100%;
   align-self: flex-end;
   display: flex;
@@ -373,14 +420,13 @@
   //border-top: 2px solid rgba(0, 0, 0, 0.2);
   .cls-icon {
     margin-right: 5px;
-  }  
+  }
   background: rgba(0, 0, 0, 0.1);
-  
-  @media(max-width: 1720px) {
+
+  @media (max-width: 1720px) {
     margin-top: 20px;
   }
 }
-
 
 .trait-slot {
   position: relative;
@@ -391,7 +437,6 @@
   align-items: stretch;
   min-height: 42px;
   //margin: 4px 0;
-
 }
 
 .trait-slot-error {
@@ -438,7 +483,7 @@
   width: 100%;
   //background: rgba(255, 255, 255, 0.4);
 
-  padding: 9px 2px;
+  padding: 7px 2px;
   transition: background 0.2s ease;
   //border-radius: 3px;
   color: #111;
@@ -446,7 +491,7 @@
   .empty-row {
     text-align: center;
     opacity: 0.7;
-    width: 100%; 
+    width: 100%;
   }
 
   > * {
@@ -465,27 +510,52 @@
   //   border-radius: 3px;
   // }
 
-
   &.artifact-slot {
-    .trait-slot-class, .trait-slot-family, .trait-slot-creature {
+    .trait-slot-class,
+    .trait-slot-family,
+    .trait-slot-creature {
       opacity: 0.2;
+      .creature-tag {
+        pointer-events: none;
+      }
     }
   }
 
-  .trait-slot-class {
-    width: 3%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
+  // .trait-slot-class {
+  //   width: 3%;
+  //   text-align: center;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
 
   .trait-slot-creature {
-    width: 14%;
+    width: 18%;
+    padding: 0 8px;
+    .non-creature-tag {
+      align-items: center;
+      display: flex;
+      padding-left: 33px;
+    }
+    .creature-tag {
+      display: flex;
+      align-items: center;
+      span.cls-icon {
+        margin-right: 8px;
+      }
+
+      background: rgba(0, 0, 0, 0.045);
+      padding: 6px 8px;
+      border-radius: 4px;
+      cursor: help;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.09);
+      }
+    }
   }
   .trait-slot-trait_name {
-    width: 14%;
+    width: 15%;
   }
   .trait-slot-trait_description {
     width: 72%;
@@ -496,20 +566,23 @@
   }
 
   &:hover {
-    background: lighten(rgba($primary-color, 0.15), 25); //rgba(255, 255, 255, 0.6);
+    background: lighten(
+      rgba($primary-color, 0.15),
+      25
+    ); //rgba(255, 255, 255, 0.6);
   }
 
   &.invalid-row {
     color: darken($color-chaos, 5);
     //background: rgba($color-chaos, 0.1);
-    background-image: url('../images/error-stripes-2.png');
+    background-image: url("../images/error-stripes-2.png");
   }
-
 }
 
 #relic-perks-table {
   width: 100%;
-  td:first-child, th:first-child {
+  td:first-child,
+  th:first-child {
     width: 6%;
     text-align: center;
   }
@@ -531,7 +604,6 @@
   }
 }
 
-
 .relic-stat-icon {
   margin-right: 4px;
   transform: translate(0px, 1px);
@@ -541,7 +613,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 2px dotted rgba( 0, 0, 0, 0.1);
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   .relic-name-header-name {
     h5 {
@@ -553,7 +625,6 @@
     }
   }
   .relic-name-header-button button {
-
     margin-right: 20px;
     padding: 15px 30px;
     margin-top: -5px;

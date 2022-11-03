@@ -15,7 +15,7 @@ Hell Knight,Pyromania,20,5,Yes,"After your creatures attack, they have a 1% chan
 Hell Knight,Reckless Abandon,1,100,Yes,Your creatures' Savage buff now causes them to have a 100% chance to deal critical damage.
 Hell Knight,Touch of Chaos,25,4,Yes,"After your creatures Attack, they have a 1% chance per rank to afflict the target with a random debuff. Maximum Bonus: 25% chance"
 Hell Knight,Hellion (ASCENSION),1,1,No,Your creatures deal 5% more damage with attacks for each time they've Attacked in the current battle.
-Reaver,Blitzkrieg,50,2,Yes,Your creatures' attacks in the same turn deal 1% more damage per rank than the last. Maximum Bonus: 50% more damage
+Reaver,Blitzkrieg,50,2,Yes,Your creatures' attacks that happen simultaneously to the same target deal 1% more damage per rank than the last. Maximum Bonus: 50% more damage
 Reaver,Controlled Anger,1,100,No,"After your creatures take 2 turns, they become immune to debuffs for the rest of the battle."
 Reaver,Mental Clarity,1,100,Yes,"After your creatures take 2 turns, they can Cast spells without consuming any Charges for the rest of the battle."
 Reaver,Mercurial,1,100,Yes,"After your creatures are Attacked, and they fail to dodge the attack, their chance to dodge attacks is doubled the next time they're Attacked. This effect stacks multiple times in a row until they successfully dodge an attack."
@@ -58,7 +58,7 @@ Necromancer,Death's Claim,1,100,Yes,"At the end of your creatures' turns, they s
 Necromancer,Famine's Thirst,1,100,Yes,"After your creatures Attack, they summon Famine."
 Necromancer,Four Horsemen,1,100,Yes,"If your creatures have Conquest, Famine, Death, and War, they cast Apocalypse at the start of their turns. Your creatures are healed by this spell."
 Necromancer,Gravewalker,10,10,Yes,"After your creatures are killed, they have a 1% chance per rank to be resurrected with 50% Health for each different minion they had before they died. Maximum Bonus: 10% chance per minion type"
-Necromancer,Meat Shield,1,100,Yes,Your creatures take 1% less damage per rank for each different minion they have. Maximum Bonus: 10% less damage per minion type
+Necromancer,Meat Shield,10,10,Yes,Your creatures take 1% less damage per rank for each different minion they have. Maximum Bonus: 10% less damage per minion type
 Necromancer,Midnight Bargain,50,2,Yes,Your creatures' minions are 2% less likely per rank to go away. Maximum Bonus: 100% reduced chance (Minions never leave)
 Necromancer,Servitude,15,6,Yes,Your creatures deal 1% more damage per rank for each different minion they have. Maximum Bonus: 15% more damage per minion type
 Necromancer,Undying Loyalty,1,100,Yes,Your creatures' minions persist beyond their master's death.
@@ -139,28 +139,28 @@ Inquisitor,Castigate,1,100,Yes,"At the start of battle, enemy Chaos creatures ar
 Inquisitor,Censure,20,5,Yes,Your creatures deal additional damage equal to 2% per rank of the healing they've received in the current battle. Maximum Bonus: 40% of healing received
 Inquisitor,Condemn,1,100,Yes,"At the start of battle, enemy Death creatures are afflicted with Vulnerable and lose 30% Defense."
 Inquisitor,Contrition,25,4,Yes,"After an enemy attacks, they have a 4% chance per rank to be afflicted with Scorned. Maximum Bonus: 100% chance"
-Inquisitor,Defy Evil,10,10,Yes,Your creatures' damage from attacks and spells ignores 2.5% of the enemies' Defense per rank. Maximum Bonus: Ignore 20% Defense
+Inquisitor,Defy Evil,10,10,Yes,Your creatures' damage from attacks and spells ignores 2.5% of the enemies' Defense per rank. Maximum Bonus: Ignore 25% Defense
 Inquisitor,Divine Strength,25,4,Yes,"After your creatures are healed, they gain Attack and Intelligence equal to 1% of the healing received per rank. Maximum Bonus: Boost equal to 25% of healing"
-Inquisitor,Flagellation,1,100,Yes,Your creatures' healing effects deal damage at 35% effectiveness when applied to enemies.
+Inquisitor,Flagellation,1,100,Yes,Your creatures' healing effects deal damage when applied to enemies.
 Inquisitor,Heresy,1,100,Yes,"When your creatures deal damage with an attack or spell, they deal 30% more damage for each debuff and Sealed Spell Gem the target has."
 Inquisitor,Judgment,25,4,Yes,"After an enemy Casts a spell, they have a 4% chance per rank to be afflicted with Silenced. Maximum Bonus: 100% chance"
 Inquisitor,Lay to Rest,100,1,Yes,Enemies can only resurrect once per battle.
-Inquisitor,Miracle,25,3,Yes,"After your creatures are resurrected, they deal damage to all enemies equal to 1.5% of their Maximum Health per rank. Maximum Bonus: 25% of max health in damage"
+Inquisitor,Miracle,25,3,Yes,"After your creatures are resurrected, they deal damage to all enemies equal to 1.5% of their Maximum Health per rank. Maximum Bonus: 37.5% of max health in damage"
 Inquisitor,Rebuke,1,100,Yes,"At the start of battle, enemy Nature creatures are afflicted with Feared and lose 30% Speed."
 Inquisitor,Shining Force,1,100,Yes,"At the start of battle, your creatures gain Rebirth."
 Inquisitor,Judgment Day (ASCENSION),1,1,No,Your creatures deal 150% more damage and take 65% less damage as a result of their class strength.
-Monk,Blurred Strikes,25,5,Yes,"After your creatures counter-attack with Celerity, they have a 2.5% chance per rank to Attack an additional time. This effect can occur repeatedly. Maximum Bonus: 50% chance"
+Monk,Blurred Strikes,25,5,Yes,"After your creatures counter-attack with Celerity, they have a 2.5% chance per rank to Attack an additional time. This effect can occur repeatedly. Maximum Bonus: 62.5% chance"
 Monk,Celerity,1,50,Yes,"After your creatures Dodge, they counter-attack the enemy."
 Monk,Crosswinds,100,2,Yes,Your creatures deal additional damage equal to 1% of their Speed per rank. Maximum Bonus: 100% of Speed contributed
 Monk,Dampen Harm,1,100,Yes,"When your creatures would receive fatal damage, they have a chance to prevent that damage equal to their chance to dodge."
 Monk,Extended Reach,20,5,Yes,"After your creatures counter-attack with Celerity, they have a 1% chance per rank to move to the top of the Timeline. Maximum Bonus: 20% chance"
-Monk,Fake Out,25,5,Yes,"After an enemy Dodges your creatures' attacks, they have a 3% chance per rank to Attack again. Maximum Bonus: 50% chance"
+Monk,Fake Out,25,5,Yes,"After an enemy Dodges your creatures' attacks, they have a 3% chance per rank to Attack again. Maximum Bonus: 75% chance"
 Monk,Fortified Spirit,10,10,Yes,"After your creatures Dodge, they gain 1% Defense per rank for each time they've Attacked with Celerity. Maximum Bonus: 10% Defense gain per celerity attack"
 Monk,Good Karma,20,5,Yes,"Your creatures always have Agile, and their Agile buff has a 5% greater chance to activate per rank. Maximum Bonus: 100% greater chance"
 Monk,Pressure Point,50,2,Yes,Increases your creatures' damage dealt with Celerity by 2% per rank. Maximum Bonus: 100% damage increase
-Monk,Protective Winds,25,4,Yes,Your creatures have an independent 3% chance per rank to Dodge attacks. Maximum Bonus: 50% chance
+Monk,Protective Winds,25,4,Yes,Your creatures have an independent 3% chance per rank to Dodge attacks. Maximum Bonus: 75% chance
 Monk,Ride the Wind,1,50,Yes,"While your creatures are Defending, they receive a bonus to their Speed instead of Defense."
-Monk,Serenity,20,5,Yes,5% of your creatures' chance to Dodge attacks per rank is applied to spells as well. Maximum Bonus: 100% of dodge chance applied
+Monk,Serenity,20,5,Yes,5% of your creatures' chance to Dodge attacks per rank is applied to spells as well. This perk ignores independent chances to dodge attacks granted by other effects. Maximum Bonus: 100% of dodge chance applied
 Monk,Spiritual Attunement,50,2,Yes,"After your creatures take indirect damage, they have a 1% chance per rank to prevent that damage. Maximum Bonus: 50% of Serenity chance applied"
 Monk,Thylacine's Fury,1,75,Yes,Your creatures deal additional damage equal to 50% of the amount of Speed they have greater than their target.
 Monk,Vital Strike,25,5,Yes,"When your creatures counter-attack with Celerity, the attack has a 2% chance per rank to deal double damage. Maximum Bonus: 50% chance"
@@ -221,6 +221,7 @@ Evoker,Overload (ASCENSION),1,1,No,"After your creatures manually Cast a spell, 
 Cabalist,Apex,5,20,Yes,Your creatures deal 1% more damage per rank for each Ethereal Spell Gem they have equipped. Maximum Bonus: 5% more damage per gem
 Cabalist,Battle Mage,50,2,Yes,"After your creatures Attack, they have a 2% chance per rank to cast one of their Ethereal Spell Gems. Maximum Bonus: 100% chance"
 Cabalist,Familiar,25,4,Yes,"After your creatures cast an Ethereal Spell Gem, they have a 2% chance per rank to summon an Animated Gem. Maximum Bonus: 50% chance"
+Cabalist,Flow of Magic,1,100,Yes,"After your creatures manually cast an Ethereal Spell Gem, they gain 50% Intelligence."
 Cabalist,Hand of the Magi,50,2,Yes,Your creatures' Ethereal Spell Gems have 2% more potency per rank. Maximum Bonus: 100% more potency
 Cabalist,Incantation,1,100,Yes,"After your creatures Defend or Provoke, they cast one of their Ethereal Spell Gems."
 Cabalist,Invoke,1,100,Yes,"At the start of your creatures' turns, they gain an Ethereal Spell Gem."
@@ -229,18 +230,17 @@ Cabalist,Prism,1,100,Yes,"After your creatures cast an Ethereal Spell Gem, they 
 Cabalist,Quickdraw,20,5,Yes,"After your creatures gain Ethereal Spell Gems, they have a 5% chance per rank to cast them. Only gems that are acquired after start-of-battle effects can be cast in this manner. Maximum Bonus: 100% chance"
 Cabalist,Shimmer,5,20,Yes,"Your creatures take 1% less damage per rank for each Ethereal Spell Gem they have equipped, up to 90% reduced damage. Maximum Bonus: 5% less damage per gem"
 Cabalist,Spellslinger,1,100,Yes,Your creatures Ethereal Spell Gems cast 1 additional time.
-Cabalist,Flow of Magic,1,100,Yes,"After your creatures cast an Ethereal Spell Gem, they gain Arcane."
 Cabalist,Temporal Concentration,1,100,Yes,Your creatures' Ethereal Spell Gems do not consume Charges when used.
 Cabalist,Unshackled,1,100,No,Your creatures are immune to Silenced.
 Cabalist,Wild Magic,5,20,Yes,"At the start of battle, your creatures gain 1 Ethereal Spell Gem that belongs to their class per rank. Maximum Bonus: 5 gems gained"
-Cabalist,Embrace the Arcane (ASCENSION),1,1,No,Your creatures' spells that are Cast automatically have a 20% chance to be treated as manual casts.
+Cabalist,Embrace the Arcane (ASCENSION),1,1,No,Your creatures' spells that are Cast automatically have a 30% chance to be treated as manual casts.
 Sorcerer,Calcify,10,10,Yes,"After an enemy takes damage from a spell, they have a 5% chance per rank to be afflicted with Stone. Maximum Bonus: 50% chance"
 Sorcerer,Comfortable Proximity,10,10,Yes,"When your creatures take damage from an enemy, they take 1% less damage per rank for each creature between the two creatures on the timeline. Maximum Bonus: 10% less damage per creature"
 Sorcerer,Fade,1,100,Yes,"After your creatures take damage from an attack or spell, they gain Invisible."
-Sorcerer,Flabbergast,20,5,Yes,"After your creatures deal damage with attacks or spells to the next enemy below them on the Timeline, that enemy has a 1% chance per rank to be sent to the bottom of the Timeline."
+Sorcerer,Flabbergast,20,5,Yes,"After your creatures deal damage with attacks or spells to the next enemy below them on the Timeline, that enemy has a 1% chance per rank to be sent to the bottom of the Timeline. Maximum Bonus: 20% chance"
 Sorcerer,Gravity's Void,15,10,Yes,"When your creatures damage an enemy, they deal 1% more damage per rank for each other creature between the two creatures on the timeline. Maximum Bonus: 15% more damage per creature"
 Sorcerer,Mental Fortitude,1,100,No,"At the start of battle, your creatures gain Shelled."
-Sorcerer,Perplex,25,4,Yes,"After an enemy takes damage from an attack, they have a 1% chance per rank to be afflicted with Confused. Maximum Bonus: 25% chance"
+Sorcerer,Perplex,25,4,Yes,"After an enemy takes damage, they have a 1% chance per rank to be afflicted with Confused. Maximum Bonus: 25% chance"
 Sorcerer,Psychic Scream,25,3,Yes,"After an enemy Casts a spell, they have a 4% chance per rank to be afflicted with Silenced. Maximum Bonus: 100% chance"
 Sorcerer,Ruin,1,100,Yes,Your creatures deal 2% more damage and take 1.5% less damage (up to 90%) for each debuff each enemy has.
 Sorcerer,Singe,25,3,Yes,"After an enemy Attacks, they have a 4% chance per rank to be afflicted with Scorned. Maximum Bonus: 100% chance"
@@ -255,13 +255,13 @@ Paladin,Crusade,50,2,Yes,Your creatures deal additional damage equal to 2% per r
 Paladin,Divine Intervention,1,100,No,"The first time your creatures would take fatal damage in battle, their Health is instead set to 1."
 Paladin,Execution Sentence,1,100,Yes,"After your creatures are killed, they deal damage to all enemies equal to 100% of the amount of damage they dealt with Retribution in the current battle."
 Paladin,Glory,25,4,Yes,"After your creatures deal damage with Retribution, their lowest stat is increased by 1% of the amount of damage dealt per rank. Maximum Bonus: Boost by 25% of damage"
-Paladin,Hand of Light,10,10,Yes,"After your creatures deal damage with Retribution, all your creatures recover Health equal to 2% of the damage dealt per rank. Maximum Bonus: Heal for 10% of damage dealt"
+Paladin,Hand of Light,10,10,Yes,"After your creatures deal damage with Retribution, all your creatures recover Health equal to 2% of the damage dealt per rank. Maximum Bonus: Heal for 20% of damage dealt"
 Paladin,Light's Augmentation,25,4,Yes,Your creatures have 3% more Defense per rank while they're Provoking. Maximum Bonus: 75% extra Defense
 Paladin,Miraculous Recovery,25,4,Yes,"After your creatures Provoke, they recover 2% Health per rank. Maximum Bonus: 50% health recovered"
-Paladin,Perseverance,20,5,Yes,Your creatures take 2.5% less damage per rank while they're provoking. Maximum Bonus: 40% less damage
+Paladin,Perseverance,20,5,Yes,Your creatures take 2.5% less damage per rank while they're provoking. Maximum Bonus: 50% less damage
 Paladin,Reckoning,1,100,Yes,"After your creatures Provoke, they Attack a random enemy."
 Paladin,Retribution,25,4,Yes,"After your creatures take damage from an attack or spell, they deal damage to the enemy equal to 1% of the damage taken per rank. Maximum Bonus: Retaliate for 25% damage"
-Paladin,Seraphim,50,2,Yes,"At the start of battle, 1% of your creatures' Defense per rank is added to their Health."
+Paladin,Seraphim,50,2,Yes,"At the start of battle, 1% of your creatures' Defense per rank is added to their Health. Maximum Bonus: 50% of Defense contributed"
 Paladin,Unbound,1,100,Yes,"After your creatures Provoke, they Defend."
 Paladin,Wrath,25,4,No,"When your creatures deal damage with Retribution while they're Defending, the amount of damage is increased by 2% per rank. Maximum Bonus: 50% extra damage"
 Paladin,Zeal,25,4,Yes,"When your creatures deal damage with Retribution while they're Provoking, the amount of damage is increased by 2% per rank. Maximum Bonus: 50% extra damage"
@@ -298,12 +298,12 @@ Tribalist,Union,10,10,Yes,Your creatures grant 1% of their highest stat per rank
 Tribalist,We Are Pack,1,100,Yes,"At the start of battle, if you have at least 4 creatures that belong to the same race fighting on your side, the remaining creatures' races are changed to that race as well. This effect does not change a creature's race if it is an Imler."
 Tribalist,Gone But Not Forgotten (ASCENSION),1,1,???,"Traits, spells and other effects that are affected by the number of a certain creature race or class now work with dead creatures as well."
 Trickster,Bafflement,6,15,Yes,"At the start of battle, 1 enemy per rank is afflicted with Confused. Maximum Bonus: All six enemies"
-Trickster,Even the Odds,50,2,Yes,"At the start of normal battles, you have a 2% chance per rank to instantly kill a random enemy. If enemies are immune to this effect, they lose 20% of their Current Health. Maximum Bonus: 100% chance to kill"
+Trickster,Even the Odds,50,2,Yes,"At the start of normal battles, you have a 2% chance per rank to instantly kill a random enemy. If enemies are immune to this effect, they lose 20% of their Current Health instead. Maximum Bonus: 100% chance to kill"
 Trickster,Feint,25,4,Yes,"After your creatures dodge an attack, they have a 4% chance per rank to afflict the enemy with Disarmed. Maximum Bonus: 100% chance to inflict"
 Trickster,Hidden Hand,15,10,Yes,Your artifacts' Spell Slots have a 2% additional chance per rank to be cast. Maximum Bonus: 15% extra chance
 Trickster,Intent to Kill,1,100,Yes,"When the enemy would dodge your creatures' attacks, the dodge chance is re-rolled one additional time."
 Trickster,Nightstalker,6,20,No,"At the start of battle, one creature in your party gains Invisible per rank, in order from first to last. Maximum Bonus: All creatures become invisible"
-Trickster,Pilfer,2,100,Yes,"At the start of battle, your creatures steal one random Spell Gem per rank from a random enemy."
+Trickster,Pilfer,2,100,Yes,"At the start of battle, your creatures steal one random Spell Gem per rank from a random enemy. Maximum Bonus: 2 spell gems stolen"
 Trickster,Prey,1,100,Yes,"When your creatures Attack while the target is afflicted with Disarmed, the target's artifact's Stat Slots are applied to your creature for all effects that relate to that attack."
 Trickster,Rebound,1,100,Yes,"When your creatures Attack, and their attack would fail to deal critical damage, the critical chance is re-rolled one additional time."
 Trickster,Sleight of Hand,1,100,No,"Whenever it is one of your creatures' turns, any random effects that fail to occur are re-rolled an additional time."
@@ -328,7 +328,7 @@ Astrologer,Summer Solstice,5,20,Yes,Your creatures at the top half of the Timeli
 Astrologer,Synastry,1,100,Yes,Your creature with the highest Defense always Provokes at the end of their turn.
 Astrologer,Transit,1,100,Yes,Your creature with the highest Speed always Attacks enemies that deal damage to it.
 Astrologer,Winter Solstice,5,20,Yes,Your creatures at the bottom half of the Timeline gain 1% Defense per rank at the start of each creature's turn. Maximum Bonus: 5% Defense gained
-Astrologer,Protostar (ASCENSION),1,1,No,"If your creatures have been killed at least 1 time in the current battle, they deal 90% more damage and take 60% less damage."
+Astrologer,Protostar (ASCENSION),1,1,No,"If your creatures have been killed in the current battle, they deal 90% more damage and take 60% less damage."
 Doombringer,Anger Management,1,100,Yes,"After your creatures' on-heal effects activate, their on-death effects activate as well."
 Doombringer,Aversion,1,100,Yes,"After your creatures' on-defend effects activate, their on-provoke effects activate as well."
 Doombringer,Blind Fury,2,50,Yes,Your creatures' on-attack and on-cast effects trigger 1 additional time per rank after they Attack or Cast a spell. Maximum Bonus: 2 additional times
@@ -382,10 +382,10 @@ Rune Knight,Aggression,10,10,Yes,Your creatures deal 1% more damage per rank wit
 Rune Knight,Covenant,1,50,Yes,"If your creatures have Cast each Rune spell at least once in the current battle, they activate your creatures' on-attack effects 1 additional time."
 Rune Knight,Crescendo,5,20,Yes,Your creatures gain and reduce stats 1% more per rank for each time your creatures Cast Rune of Dun in the current battle. Maximum Bonus: 5% stat change potency per Dun cast
 Rune Knight,Destiny,10,10,Yes,Your creatures have an independent 1% chance per rank to dodge and deal critical damage for each time your creatures Cast Rune of Nax in the current battle. Maximum Bonus: 10% chance per Nax cast
-Rune Knight,Diabolism,1,100,No,Your creatures are immune to Silenced.
+Rune Knight,Diabolism,1,100,No,Your creatures are immune to Silenced and their Rune Spell Gems cannot be Sealed.
 Rune Knight,Discharge,20,5,Yes,Your creatures' Rune spells have a 1% chance to target all enemies for each time your creatures Cast a Rune spell in the current battle. Maximum Bonus: 20% chance
 Rune Knight,Embiggen,10,10,Yes,Your creatures deal 1% more damage per rank with spells for each time your creatures cast rune of Sah in the current battle. Maximum Bonus: 10% more damage per Sah cast
-Rune Knight,Empowerment,2,50,Yes,"If your creatures have Cast each Rune spell at least once in the current battle, they Cast 1 additional time per rank and no longer consume Charges."
+Rune Knight,Empowerment,2,50,Yes,"If your creatures have Cast each Rune spell at least once in the current battle, they Cast 1 additional time per rank and no longer consume Charges. Maximum Bonus: 2 additional casts"
 Rune Knight,Inspirit,1,50,Yes,Your creatures' Rune spells grant them a buff which differs based on which spell it is. Cor: Savage Dun: Berserk Lua: Shelled Nax: Agile Sah: Arcane
 Rune Knight,Rune of Lua,1,100,Yes,"At the start of battle, your Life creatures gain Rune of Lua."
 Rune Knight,Rune of Cor,1,100,Yes,"At the start of battle, your Chaos creatures gain Rune of Cor."
@@ -397,7 +397,7 @@ Rune Knight,Undermine,1,50,Yes,Your creatures' Rune spells afflict enemies with 
 Rune Knight,Runic Might (ASCENSION),1,1,No,Your creatures' Rune spells have 10% more potency for each Charge they're missing.
 Spellweaver,Attunement,5,20,No,"Your creatures have 5% more Attack, Intelligence, Defense, and Speed per rank for each Chaos, Sorcery, Death or Nature Infusions you have. Your creatures take 1% less damage per rank for each Life Infusion you have. Maximum Bonus: 25% more stats, 5% less damage per infusion"
 Spellweaver,Chaos Infusion,1,100,No,"After your creatures manually Cast a Chaos spell, you gain 1 Chaos Infusion. When any of your creatures manually Cast a spell, they decrease the enemies' stats by 1% for each Chaos Infusion you have."
-Spellweaver,Chromatic Layering,5,20,No,"You start battles with 1 Infusion per rank, up to 1 per class."
+Spellweaver,Chromatic Layering,5,20,No,"You start battles with 1 Infusion per rank, up to 1 per class. Maximum Bonus: 5 Infusions"
 Spellweaver,Chrono Shift,1,100,Yes,"After your creatures manually Cast a spell, they also Cast the Spell Gem below it."
 Spellweaver,Death Infusion,1,100,No,"After your creatures manually Cast a Death spell, you gain 1 Death Infusion. After any of your creatures manually Cast a spell, they afflict enemies with 1 random debuff as long as you have at least 1 Death Infusion, plus 1 additional random debuff for every 3 Death Infusions you have beyond that."
 Spellweaver,Elemental Empowerment,5,20,No,Your creatures' spells are 10% more potent per rank for each time your creatures have Cast Colorwave in the current battle. Maximum Bonus: 25% more potency
@@ -444,7 +444,7 @@ Siegemaster,Titanic Rage,1,100,Yes,Your creatures deal 150% more damage to enemi
 Siegemaster,War Machine,1,100,Yes,"After your creatures Provoke, they Defend."
 Siegemaster,Furious Protector (ASCENSION),1,1,No,Your creatures always deal critical damage and never dodge.
 Windrunner,Accumulation,5,20,Yes,"At the start of your creatures' turns, they gain 1% Speed per rank, plus additional Speed equal to 1% per rank of the amount of Speed they've gained in the current battle. Maximum Bonus: 5% Speed"
-Windrunner,Aeroforged,10,10,Yes,"Your creatures gain 3% more benefit from their Artifacts' Stat Slots per rank, other than Health. Maximum Bonus: 20% more benefit"
+Windrunner,Aeroforged,10,10,Yes,"Your creatures gain 3% more benefit from their Artifacts' Stat Slots per rank, other than Health. Maximum Bonus: 30% more benefit"
 Windrunner,Born Again,1,100,No,"After your creatures are killed from start-of-battle effects, they are resurrected with 50% Health."
 Windrunner,Derivation,5,20,Yes,"After your creatures gain stats other than Speed, they gain Speed equal to 3% of the amount gained per rank. Maximum Bonus: 15% of the amount"
 Windrunner,First Served,3,30,No,"After the order of the Timeline is determined at the start of battle, your creatures are moved up the Timeline 1 position higher per rank. Maximum Bonus: 3 positions higher"
@@ -475,5 +475,140 @@ Fanatic,Ultima,3,30,Yes,All Avatars' Ultimate Spell Gems have 1 additional Charg
 Fanatic,Undying Exaltation,1,100,Yes,"After your Avatars have been dead for 7 turns, they are resurrected with 50% Health."
 Fanatic,Unstoppable Force,1,100,Yes,Ultimate Spell Gems cannot be Sealed.
 Fanatic,Godforged (ASCENSION),1,1,No,Your Avatars have 50% more benefit from the Godforge.
+Toxicologist,Addictive Effect,5,20,Yes,Your creatures deal additional damage equal to 4% of the potency of their Poisoned debuff per rank. Maximum Bonus: 20% of poison potency
+Toxicologist,Bioassay,1,100,Yes,Your creatures' spells that interact with Poisoned do not consume Charges.
+Toxicologist,Breath of Death,1,100,Yes,"If an enemy dies while it is afflicted with Poisoned, all other enemies take damage equal to 50% of the potency of this debuff."
+Toxicologist,Carcinogen,1,100,Yes,Enemies always have Poisoned.
+Toxicologist,Chronic Illness,2,50,Yes,Your creatures take damage from Poison 1 additional time per rank. Maximum Bonus: 2 extra poison damages
+Toxicologist,Confounding Factors,5,20,Yes,Your creatures' spells that interact with Poisoned have 20% more potency per rank. Maximum Bonus: 100% extra potency
+Toxicologist,Diagnosis,1,100,Yes,Your creatures always have Poisoned. Your creatures can take a maximum of 50% of their Current Health as damage from Poisoned.
+Toxicologist,Dispersing Plague,1,100,Yes,"After your creatures take damage from Poison, they have a 20% chance to Cast Virus."
+Toxicologist,Inoculate,1,100,Yes,Your creatures take 10% (up to 80%) less damage from attacks and spells for each time they've taken damage from Poisoned in the current battle.
+Toxicologist,Neurotoxicity,1,100,Yes,Enemies take 1% more damage from attacks and spells for each time each enemy has taken damage from Poisoned in the current battle.
+Toxicologist,Plague of Toads,1,100,Yes,"After your creatures Attack, they have a 20% chance to Cast Toxic Frogmania."
+Toxicologist,Prognosis,1,100,Yes,"After your creatures take damage from Poisoned, one of your other creatures is healed for the same amount."
+Toxicologist,Side Effects,1,100,Yes,"After an enemy takes damage from Poisoned, they are afflicted with a random debuff."
+Toxicologist,Sudden Exposure,1,100,Yes,"After your creaturess take damage from Poisoned, a random enemy takes this damage as well."
+Toxicologist,Teratogen,5,20,Yes,"After a creature takes damage from Poisoned, the potency of all enemies' Poisoned debuffs is increased by 5% per rank. Maximum Bonus: 25% potency boost"
+Toxicologist,Toxic Absorption (ASCENSION),1,1,No,"After your creatures take damage from Poisoned, they gain stats (other than Health) equal to 50% of the damage received."
+Shadowbringer,Arrogance is Confidence,1,100,Yes,"Your creatures with Blighted ignore the effects of this debuff, and deal 50% more damage."
+Shadowbringer,Ascent of the Damned,1,100,Yes,"After your creatures attack, they cast Minor Healing, Healing, or Major Healing on themselves."
+Shadowbringer,Dark Souls,1,100,Yes,"After your creatures Attack, they cast Minor Healing, Healing, or Major Healing on the target."
+Shadowbringer,Dead Divinity,1,100,Yes,Enemies' healing spells have 50% more potency.
+Shadowbringer,Doomsday,1,100,Yes,"After your creatures heal an enemy, they have a 25% chance to cast Ill Fate."
+Shadowbringer,Dystopia,1,100,Yes,"After an enemy casts a healing spell, each of your creatures have a 5% chance to Cast Shadow Crash."
+Shadowbringer,Fall From Grace,1,100,Yes,Enemies receive 5% more healing for each time they've been damaged by Blighted in the current battle.
+Shadowbringer,Harrow,1,100,Yes,Enemies gain 50% less benefit from stat-boosting effects.
+Shadowbringer,Leeches,1,100,Yes,"After an enemy attacks, it gains Leeching."
+Shadowbringer,Phantom Pain,1,100,Yes,"At the start of each enemy's turn, they have a 25% chance to cast Minor Healing on themselves."
+Shadowbringer,Self-fulfilling Prophecy,1,100,Yes,"After an enemy Casts a spell, it gains Mending."
+Shadowbringer,Shadow Mending,1,100,Yes,Your creatures always have Leeching and Mending.
+Shadowbringer,Shadow Sickness,1,100,Yes,Enemies always have Blighted.
+Shadowbringer,Touch of Darkness,1,100,Yes,"After your creatures damage an enemy, the enemy is healed for 20% of the damage dealt."
+Shadowbringer,Worldbreaker,1,100,Yes,Enemies take 100% more damage from Blighted.
+Shadowbringer,Endwalker (ASCENSION),1,1,No,"If an enemy dies while it is afflicted with Blighted, it cannot be resurrected."
+Engineer,Annealment,1,100,Yes,Enemies take 35% more indirect damage.
+Engineer,Dimensional Stability,2,50,Yes,Enemies' Bomb debuffs detonate 1 additional time per rank. Maximum Bonus: 2 additional detonations
+Engineer,Dismantlement,1,100,Yes,Enemies deal 5% less damage (up to 80%) for each time they've been damaged by Bomb in the current battle.
+Engineer,Drone Bait,3,35,Yes,"After an enemy's Bomb debuff detonates, one of your creatures gains 1 stack of Microbots per rank. Maximum Bonus: 3 stacks of Microbots"
+Engineer,Energy Efficient,1,100,Yes,Your creatures' spells that interact with Bomb do not consume Charges.
+Engineer,Extrusion,1,100,Yes,Enemies' Bomb debuffs deal 50% more damage for each time they've been damaged by this debuff in the current battle.
+Engineer,Grand Finale,1,100,Yes,"After your creatures are killed, they cast Corpse Explosion."
+Engineer,Heat Distortion,1,100,Yes,Enemies with Bomb have 20% less stats (excluding Health).
+Engineer,Impact Resistance,1,100,Yes,"After an enemy takes damage from Bomb, your creatures gain a Barrier that absorbs damage equal to 100% of the damage dealt."
+Engineer,Light the Fuse,1,100,Yes,"After your creatures attack, they cast Pyroburst on the target."
+Engineer,Locked and Loaded,1,100,Yes,"At the start of your creatures' turns, they have a 20% chance to cast Explosive Arrow on a random enemy."
+Engineer,Pinpoint,10,10,Yes,Your creatures deal 5% more damage per rank to enemies with Bomb. Maximum Bonus: 50% more damage
+Engineer,Primed and Ready,1,100,Yes,"At the start of battle, enemies are afflicted with Bomb."
+Engineer,Prototype,1,100,Yes,The potency of enemies' Bomb debuffs that are applied after start-of-battle effects is based on your creatures' highest stats (other than Health) instead of Speed.
+Engineer,Renewable Armaments,1,100,Yes,"After an enemy's Bomb detonates, it has a 35% chance to be afflicted with Bomb again."
+Engineer,Chain Reaction (ASCENSION),1,1,No,"After an enemy takes damage from Bomb, all other enemies take this damage as well."
+Brewmaster,Autograt,1,100,Yes,"After start-of-battle effects are determined, your creatures' Booze spells gain the ‘Chance to Attack', ‘Chance to Defend', and ‘Chance to Provoke' properties."
+Brewmaster,Brewmaster's Handshake,1,100,Yes,Your creatures can cast Booze spells manually.
+Brewmaster,Chaser,1,100,Yes,"After your creatures manually cast a Booze spell, they have a 50% chance to Cast a random spell. Otherwise, they Attack a random enemy."
+Brewmaster,Double Entendre,1,100,Yes,Your creatures' Booze spells also have a chance to be Cast at the start of the equipped creatures' turns.
+Brewmaster,Experimental Cocktail,1,100,Yes,"At the start of battle, your creatures gain all Booze spells that belong to their class."
+Brewmaster,Highball,1,100,Yes,Your creatures' Booze spells count 50% less against their per-turn Casting limit.
+Brewmaster,Inebriation,1,100,Yes,Enemies have a 5% chance (up to 80%) to deal no damage for each time they've been affected by an Booze spell in the current battle.
+Brewmaster,Liquid Courage,1,100,Yes,Your creatures deal 3% more damage for each time they've cast a Booze spell in the current battle.
+Brewmaster,Muddle,1,100,Yes,Your creatures attack 1 additional time (up to 3) for every 5 Booze spells they've Cast in the current battle.
+Brewmaster,Nightcap,1,100,Yes,Enemies cannot be resurrected if they have been affected by Booze spells at least 3 times in the current battle.
+Brewmaster,Numb the Pain,1,100,Yes,Your creatures have a 5% chance (up to 80%) to avoid damage for each time they've been affected by an Booze spell in the current battle.
+Brewmaster,On The House,1,100,Yes,Your creatures' Booze spells do not consume Charges.
+Brewmaster,Speed Rail,1,100,Yes,Your creatures cast Booze spells 1 additional time (up to 3) for every 5 Booze spells they've cast in the current battle.
+Brewmaster,Straight Up,1,100,Yes,Your creatures' Booze spells cannot be Sealed.
+Brewmaster,Top Shelf,1,100,Yes,Your creatures' Booze spells have a 100% increased chance to be cast.
+Brewmaster,Drunken Camaraderie (ASCENSION),1,1,No,Enemies take a moderate amount of damage and your creatures are healed for a moderate amount when they are affected by your creatures' Booze spells.
+Demonologist,Brim Fiends,1,100,Yes,"At the start of your creatures' turns, they gain 1 stack of Brim Fiends."
+Demonologist,Chaos Satyrs,1,100,Yes,"At the start of your creatures' turns, they gain 1 stack of Chaos Satyr."
+Demonologist,Demonic Consumption,1,100,Yes,"After any number of stacks of your creatures' Lesser or Greater Demons go away, they recover 100% Health."
+Demonologist,Demonic Pact,1,100,Yes,Your creatures have 10% more stats (excluding Health) for each different Greater Demon your creatures have.
+Demonologist,Drained Essence,1,100,Yes,Your creatures deal 3% more damage for each time all your creatures' minions went away in the current battle.
+Demonologist,Final Summoning,1,100,Yes,"After your creatures' Greater Demons go away, they cast a powerful spell depending on which Greater Demon went away."
+Demonologist,Fire Imps,1,100,Yes,"At the start of your creatures' turns, they gain 1 stack of Fire Imps."
+Demonologist,Inner Demons,1,100,Yes,"After any number of stacks of your creatures' Lesser Demons go away, they gain 15% stats."
+Demonologist,Reawakening,1,100,Yes,"After your creatures sacrifice a Lesser Demon, each stack has a 35% chance to resurrect."
+Demonologist,Renounce the Light,1,1,No,"Your creatures cannot gain buffs or minions that are unrelated to this specialization. This perk is always active while your specialization is Demonologist, even if you haven't allocated any Perk Points to it."
+Demonologist,Soul Shield,1,100,Yes,Your creatures take 3% less damage (up to 80%) for each time all your creatures' minions went away in the current battle.
+Demonologist,Summon Asmodeus,1,100,Yes,"At the start of battle, your Chaos creatures gain Asmodeus."
+Demonologist,Summon Beelzebub,1,100,Yes,"At the start of battle, your Death creatures gain Beelzebub."
+Demonologist,Summon Belphegor,1,100,Yes,"At the start of battle, your Sorcery creatures gain Belphegor."
+Demonologist,Summon Leviathan,1,100,Yes,"At the start of battle, your Nature creatures gain Leviathan."
+Demonologist,Summon Mammon,1,100,Yes,"At the start of battle, your Life creatures gain Mammon."
+Demonologist,Summon Satanachia,1,100,Yes,"At the start of battle, if your creatures collectively have Asmodeus, Beelzebub, Mammon, Leviathan, and Belphegor, they gain Satanachia."
+Demonologist,Void Shift,1,100,Yes,"When your creatures' Greater Demons would go away, they move to a different creature fighting on your side instead."
+Demonologist,Summon Lucifer (ASCENSION),1,1,No,"At the start of battle, if your creatures collectively have Asmodeus, Beelzebub, Mammon, Leviathan, and Belphegor, your creatures gain Lucifer."
+Gladiator,Acclimated Armaments,1,100,Yes,Your creatures' Arsenal spells are 5% more potent for each time they've Cast an Arsenal spell in the current battle.
+Gladiator,Blacksmith's Boon,1,100,Yes,Your creatures' Trick Slots that apply buffs and debuffs have a 35% greater chance to activate.
+Gladiator,Crowd Favorite,1,100,Yes,"After your creatures' Trick Slots activate, they gain a random Arsenal Spell."
+Gladiator,Double Time,1,100,Yes,Your creatures' Trick Slots that apply buffs and debuffs affect 1 additional creature.
+Gladiator,Elbow Grease,1,100,Yes,Your creatures gain 50% more benefit from their Artifact's Stat Slots.
+Gladiator,Frenzy,1,100,Yes,Your creatures deal 15% more damage with attacks and spells for each debuff they afflicted from all your Artifacts' Trick Slots.
+Gladiator,Grip of the Gods,1,100,Yes,Your creatures are immune to Disarmed.
+Gladiator,Helping Hand,1,100,Yes,"After your creatures' Trick Slots activate, they resurrect an ally with 50% Health. If none of your creatures are dead, they heal an ally for 50% Health instead."
+Gladiator,Impending Victory,1,100,Yes,50% of the potency of your creatures' Arsenal Spells is based on their highest stat instead of Intelligence.
+Gladiator,It's Called a Lance,1,100,Yes,"After your creatures manually Cast an Arsenal Spell, they cast a Living Lance spell. The type of Living Lance spell is based on the caster's class."
+Gladiator,Nether Imbuement,10,10,Yes,"Your creatures' Nether Stones are 5% more powerful per rank. This perk does not affect a Nether Stone's traits, spells, or any Trick Slots that increase a creature's maximum number of Spell Gem slots. Maximum Bonus: 50% more powerful"
+Gladiator,Reprimand,1,100,Yes,"After your creatures Provoke, their Ethereal Spell Gems are transformed into random Arsenal Spells."
+Gladiator,Taking Measure,1,100,Yes,Your creatures take 10% less damage (up to 80%) for each buff they gained from all your Artifacts' Trick Slots.
+Gladiator,Turn the Tables,1,100,Yes,"After your creatures manually Cast an Arsenal spell, they Attack a random enemy for 50% more damage."
+Gladiator,War Paint,1,100,Yes,Your creatures have 10% more stats (other than Health) for each non-Ethereal Arsenal Spell they have equipped.
+Gladiator,Killing Machine (ASCENSION),1,1,No,"At the end of your creatures' turns, each of their Arsenal Spells have a 5% chance to be Cast."
+Graveborn,Carapace That Protects,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 25%, 50%, and 100% Defense."
+Graveborn,Claws That Cast,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 25%, 50%, and 100% Intelligence."
+Graveborn,Death's Bane,1,100,No,"The first 3 times your creatures are resurrected, they attack random enemies 1, 2, and 3 times."
+Graveborn,Death's Echo,1,100,No,"The first 3 times your creatures are resurrected, they Cast their spells at random 1, 2, and 3 times."
+Graveborn,Dread Covenant,1,100,Yes,Your creatures take 25% less damage (up to 80%) for each time they've been resurrected in the current battle.
+Graveborn,Eternal Legacy,1,100,Yes,"The first 3 times your creatures are resurrected, they gain a random trait that belongs to their race."
+Graveborn,Graveborn Bargain,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 1, 2, and 3 random buffs."
+Graveborn,Heart That Thrives,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 25%, 50%, and 100% Maximum Health."
+Graveborn,Jaws That Bite,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 25%, 50%, and 100% Attack."
+Graveborn,Legs That Carry,1,100,Yes,"The first 3 times your creatures are resurrected, they gain 25%, 50%, and 100% Speed."
+Graveborn,Mortal Vessel,1,100,Yes,Your creatures deal 50% more damage with attacks and spells for each time they've been resurrected in the current battle.
+Graveborn,Past Life Regression,1,100,Yes,Your creatures' stat changes persist through death.
+Graveborn,Somnus,1,1,No,"The first 3 times your creatures die, they are resurrected with 25%, 50%, and 100% Health. Your creatures cannot be resurrected by any other means. Your creatures' on-ressurect effects can activate only once at a time. This perk is always active while your specialization is Graveborn, even if you haven't allocated any Perk Points to it."
+Graveborn,Unnatural Causes,1,100,No,Your creatures that have been resurrected at least 1 time are resistant to debuffs. Your creatures that have been resurrected at least 3 times always have Immune.
+Graveborn,Visitors From Before,1,100,Yes,Your creatures' buffs and minions persist through death.
+Graveborn,From Beyond the Grave (ASCENSION),1,1,No,"If your creatures have been resurrected at least 3 times in battle, their traits are active even while they're dead. This perk does not affect traits that cause creatures to intercept or take damage in place of their allies."
+Mime,Bewilderment,1,100,Yes,"After an enemy attacks, it has a 25% chance to be afflicted with Blind."
+Mime,Circus Walk,1,100,Yes,"The first time your creatures Attack each turn, your other creatures have a 15% chance to Attack the enemy as well."
+Mime,Clic,1,100,Yes,"The first time your creatures Attack each turn, the target has a 15% chance to attack itself as well."
+Mime,Finger Painting,1,100,Yes,"When an enemy gains a buff, one of your creatures gains that buff as well."
+Mime,Follow the Leader,1,100,Yes,"The first time your creatures Cast a spell each turn, your other creatures have a 15% chance to Cast that spell as well."
+Mime,Gesticulation,1,100,Yes,"After an enemy Provokes, one of your creatures Provokes as well."
+Mime,Imitation,1,100,Yes,"The first time an enemy Casts a spell each turn, one of your creatures Casts that spell as well."
+Mime,Immobility,1,100,Yes,"At the start of your creatures' turns, they have a 10% chance to Cast Aggravate."
+Mime,Mock,1,100,Yes,"After an enemy casts a spell, it has a 25% chance to be afflicted with Confused."
+Mime,Pressure,1,100,Yes,"The first time an enemy Attacks each turn, one of your creatures Attacks a random enemy."
+Mime,Pull the Rope,1,100,Yes,"When an enemy afflicts your creatures with a debuff, a random enemy is afflicted with that debuff as well."
+Mime,Stationary Walk,1,100,Yes,Your creatures take 5% less damage (up to 80%) for each time an enemy has Cast a spell in the current battle.
+Mime,Stillness and Silence,1,100,Yes,Enemies always have Cursed.
+Mime,The Lean,1,100,Yes,Your creatures deal 5% more damage with attacks and spells for each time an enemy has Attacked in the current battle.
+Mime,Trapped In a Box,1,100,Yes,"After an enemy Defends, one of your creatures Defends as well."
+Mime,Fidelity (ASCENSION),1,1,No,The chance for your Mime perks to activate is doubled.
+Deprived,Total Deprivation,1,1,Yes,"Your creatures' Fused traits are ignored. You cannot use Avatar creatures. Your creatures' Relic effects are ignored. This perk is always active while your specialization is Deprived, even if you haven't allocated any Perk Points to it."
+Deprived,Simple Life (ASCENSION),1,1,No,"You have a 100% increased chance to find Skins. This perk is always active, even if your specialization is not Deprived."
+Pariah,Introversion,1,1,Yes,"You can only use 3 creatures at a time. Your Druid anointments are ignored. This perk is always active while your specialization is Pariah, even if you haven't allocated any Perk Points to it."
+Pariah,Lifelong Respite (ASCENSION),1,1,No,"You have a 25% increased chance to find Nether Stones. This perk is always active, even if your specialization is not Pariah."
 Royal,Master of All,1,1500,No,You can equip 10 additional Anointments.
 Royal,Highborn (ASCENSION),1,1,No,"You can equip 3 additional Anointments, or 5 if you've ascended all other specializations."
